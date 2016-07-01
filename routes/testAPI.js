@@ -16,6 +16,23 @@ trello.getBoards(userId, function(err, value) {
                 throw e;
             }
         }
+        trello.getListsOnBoard(board.id, function (err, value) {
+            value.map(function (list) {
+                try{
+                    fs.mkdirSync('./boards/'+ coolName[coolName.length-1] + "/" + list.name);
+                } catch(e){
+                    if(e.code !== 'EEXIST'){
+                        throw e;
+                    }
+                }
+                console.error(err);
+                console.log(value);
+            });
+        });
+        trello.getCardsOnBoard(board.id, function (err, value) {
+            console.error(err);
+            console.log(value);
+        });
     });
     console.error(err);
     console.log(value);
