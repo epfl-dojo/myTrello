@@ -2,8 +2,8 @@ var fs = require("fs"),
     secrets = JSON.parse(fs.readFileSync('secrets.json', 'utf8'));
 
 var Trello = require("trello");
-var trello = new Trello(secrets["user_key"], secrets["trello_readonly_key"]);
-var userId = secrets["user_id"];
+var trello = new Trello(secrets["trello_developer_api_key"], secrets["trello_readonly_token"]);
+var userId = secrets["trello_user_id"];
 
 function mkdirtree(/* elements */) {
     var elements = Array.prototype.slice.call(arguments);
